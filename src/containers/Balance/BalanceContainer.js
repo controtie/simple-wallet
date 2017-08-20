@@ -1,9 +1,20 @@
 import { connect } from 'react-redux';
 import Balance from './Balance';
+import * as actions from './balance-actions';
 
 const mapStateToProps = (state) => {
+  console.log('state', state);
   return state;
 };
 
-export default connect(mapStateToProps)(Balance);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchBalance: () => {
+      console.log('fetching');
+      dispatch(actions.fetchBalance());
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Balance);
 
