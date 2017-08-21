@@ -2,6 +2,7 @@
   "name": "simple-wallet",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001/",
   "dependencies": {
     "bitgo": "^3.5.1",
     "bufferutil": "^3.0.2",
@@ -18,6 +19,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "node ./server/server.js"
   }
 }

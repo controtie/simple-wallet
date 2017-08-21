@@ -1,5 +1,4 @@
 import * as types from './balance-action-types';
-import bitgo from '../../api/bitgo';
 
 export const fetchingBalanceStart = () => {
   return {
@@ -19,6 +18,10 @@ export const fetchingBalanceFail = () => {
 
 // API call to fetch current provided wallet
 export const fetchBalance = () => (dispatch) => {
+
   dispatch(fetchingBalanceStart());
+  fetch('api/v1/fetchBalance')
+    .then((res) => res.json())
+    .then((json) => console.log(json));
 };
 
