@@ -20,7 +20,7 @@ export const fetchingBalanceFail = () => {
 export const fetchBalance = () => (dispatch) => {
 
   dispatch(fetchingBalanceStart());
-  fetch('api/v1/fetchBalance')
+  fetch('api/v1/bitgo/fetchBalance')
     .then((res) => res.json())
     .then((json) => console.log(json));
 };

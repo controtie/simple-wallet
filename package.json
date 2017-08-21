@@ -5,6 +5,7 @@
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "bitgo": "^3.5.1",
+    "body-parser": "^1.17.2",
     "bufferutil": "^3.0.2",
     "dns": "^0.2.2",
     "react": "^15.6.1",
