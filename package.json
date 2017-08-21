@@ -3,12 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bitgo": "^3.5.1",
+    "bufferutil": "^3.0.2",
+    "dns": "^0.2.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",
     "react-scripts": "1.0.11",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "utf-8-validate": "^3.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
