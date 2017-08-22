@@ -20,8 +20,8 @@ router.post('/login', function(req, res) {
     { username, password, otp },
     function callback(err, response) {
       if (err) {
-        // handle error
-        console.log('error!!!', err);
+        res.status(400).send({err});
+        return;
       }
       var token = response.token;
       var user = response.user;
