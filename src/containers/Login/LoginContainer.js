@@ -3,7 +3,21 @@ import Login from './Login';
 import * as actions from './login-actions';
 
 const mapStateToProps = (state) => {
-  return state.login;
+  const {
+    login: {
+      username,
+      password,
+      otp,
+      isLoggingIn,
+    } = {},
+  } = state;
+
+  return {
+    username,
+    password,
+    otp,
+    isLoggingIn,
+  }
 };
 
 const mapDispatchToProps = (dispatch) => {

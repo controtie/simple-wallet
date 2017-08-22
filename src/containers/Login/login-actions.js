@@ -57,6 +57,9 @@ export const login = () => (dispatch, getState) => {
     .then((json) => {
       dispatch(notLoggingIn());
       console.log(json)
+    })
+    .catch(() => {
+      dispatch(notLoggingIn());
     });
 };
 
