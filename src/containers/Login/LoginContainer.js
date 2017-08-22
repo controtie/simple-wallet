@@ -3,7 +3,6 @@ import Login from './Login';
 import * as actions from './login-actions';
 
 const mapStateToProps = (state) => {
-  console.log('login', state.login);
   return state.login;
 };
 

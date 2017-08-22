@@ -7,7 +7,6 @@ var bitgoRequests = require('./bitgo-requests');
 app.use('/api/v1/bitgo', bitgoRequests);
 
 app.post('/', function(req, res) {
-  console.log('/ hit');
   res.send('home');
 });
 
