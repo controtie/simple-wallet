@@ -3,14 +3,12 @@ import Balance from './Balance';
 import * as actions from './balance-actions';
 
 const mapStateToProps = (state) => {
-  console.log('state', state);
   return state;
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchBalance: () => {
-      console.log('fetching');
       dispatch(actions.fetchBalance());
     },
   };

@@ -7,7 +7,7 @@ const Balance = (props) => {
 
   return (
     <div>
-      <p> Balance goes here! </p>
+      <p> Fetch Balance </p>
       <button onClick={fetchBalance}>
         fetch balance
       </button>
