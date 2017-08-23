@@ -5,10 +5,10 @@ import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 import { Provider } from 'react-redux';
 import { Route } from 'react-router';
 import { createStore, applyMiddleware } from 'redux';
-
 import rootReducer from './root-reducer';
 import './styles/App.css';
-import RootComponent from './components/RootComponent';
+import Login from './containers/Login/';
+import Balance from './containers/Balance/';
 
 // Create new browser history, and allow it to intercept changes to redux store as middleware
 // Apply thunks to redux, allowing delayed calling of 'dispatch'
@@ -25,11 +25,12 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div className="App">
-          <ConnectedRouter history={history}>
-            <Route exact path="/" component={RootComponent} />
-          </ConnectedRouter>
-        </div>
+        <ConnectedRouter history={history}>
+          <div className="App">
+            <Route exact path="/" component={Login} />
+            <Route path="/wallets" component={Balance} />
+          </div>
+        </ConnectedRouter>
       </Provider>
     );
   }

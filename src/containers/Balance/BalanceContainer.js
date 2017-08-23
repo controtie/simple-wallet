@@ -1,18 +1,40 @@
+import React from 'react';
 import { connect } from 'react-redux';
 import Balance from './Balance';
 import * as actions from './balance-actions';
 
+class BalanceContainer extends React.Component {
+  constructor() {
+    super();
+  }
+
+  componentDidMount() {
+    const {
+      onFetchWallets,
+    } = this.props;
+
+    onFetchWallets();
+  }
+  render() {
+    const {
+      wallets,
+      onFetchWallets,
+      onFetchBalance,
+    } = this.props;
+    return (
+      <Balance
+        wallets={wallets} />
+    );
+  }
+}
+
 const mapStateToProps = (state) => {
   const {
-    login: {
-      isLoggedIn,
-    } = {},
     balance: {
       wallets,
     } = {},
   } = state;
   return {
-    isLoggedIn,
     wallets,
   };
 };
@@ -28,5 +50,5 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Balance);
+export default connect(mapStateToProps, mapDispatchToProps)(BalanceContainer);
 

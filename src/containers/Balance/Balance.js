@@ -3,17 +3,10 @@ import Wallet from '../../components/Wallet';
 
 const Balance = (props) => {
   const {
-    isLoggedIn,
     wallets,
     onFetchBalance,
     onFetchWallets,
   } = props;
-
-  if (!isLoggedIn) {
-    return null;
-  }
-
-  console.log('wallets', wallets);
 
   return (
     <div>
