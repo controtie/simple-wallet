@@ -56,6 +56,18 @@ router.post('/unlock', function(req, res) {
   });
 });
 
+router.get('/wallets', function(req, res) {
+  const wallets = bitgo.wallets();
+  wallets.list({}, function callback(err, wallets) {
+    if (err) {
+      console.log('Fetch Wallets Failed'. err);
+      res.status(400).send({err});
+      return;
+    }
+    res.send({ wallets });
+  });
+});
+
 router.get('/fetchBalance', function(req, res) {
 });
 
