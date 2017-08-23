@@ -20,6 +20,13 @@ export const fetchingBalanceFail = () => {
   };
 };
 
+export const fetchWallets = (wallets) => {
+  return {
+    type: types.BALANCE_UPDATE_WALLETS,
+    wallets,
+  };
+};
+
 // Fetch wallets on associated BitGo account
 export const onFetchWallets = (username, password, otp) => (dispatch) => {
   dispatch(fetchingBalanceStart());

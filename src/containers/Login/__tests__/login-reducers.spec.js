@@ -92,7 +92,3 @@ describe('Login Reducers behave with passed actions', () => {
   });
 });
 
-
-
-
-
