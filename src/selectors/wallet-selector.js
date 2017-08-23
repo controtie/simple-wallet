@@ -12,6 +12,11 @@ const walletSelector = (state) => {
 export default createSelector(
   [ walletSelector ],
   (wallets) => {
-    return Array.isArray(wallets) && wallets.map(wallet => wallet.id);
+    return Array.isArray(wallets)
+    && wallets.map(wallet => {
+      return {
+        id: wallet.id
+      };
+    });
   }
 );

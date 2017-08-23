@@ -68,6 +68,22 @@ router.get('/wallets', function(req, res) {
   });
 });
 
+router.post('/walletBalances', function(req, res) {
+  const walletIds = req.body;
+  console.log('walletIds', walletIds);
+  const wallets = bitgo.wallets();
+  const balanceRequests = walletIds.map(id => wallets.get(id));
+  Promise.all(balanceRequests)
+    .then((walletBalances) => {
+      res.send(walletBalances);
+    })
+    .catch(err => {
+      console.log('Fetch Wallet Data Failed'. err);
+      res.status(400).send({err});
+      return;
+    });
+});
+
 router.get('/fetchBalance', function(req, res) {
 });
 

@@ -1,6 +1,7 @@
 import {
   isValidStatusCode,
   toJSON,
+  makePostOptions,
 } from '../../utils/api-helpers';
 import * as types from './balance-action-types';
 import walletIdSelector from '../../selectors/wallet-selector';
@@ -48,16 +49,18 @@ export const fetchBalance = (username, password, otp) => (dispatch, getState) =>
   const state = getState();
   const walletIds = walletIdSelector(state);
   console.log('walletIds', walletIds);
-  /*
-  fetch('api/v1/bitgo/wallets')
+  const payload = { body: JSON.stringify(walletIds) };
+  const options = makePostOptions(payload);
+
+  fetch('api/v1/bitgo/walletBalances', options)
     .then(isValidStatusCode)
     .then(toJSON)
     .then((json) => {
       console.log('json', json);
+      dispatch(updateWallets(json));
     })
     .catch((err) => {
       console.log('Error fetching wallets!', err);
     });
-  */
 };
 
