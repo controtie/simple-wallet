@@ -15,7 +15,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchBalance: () => {
+    onFetchWallets: () => {
+      dispatch(actions.fetchWallets());
+    },
+    onFetchBalance: () => {
       dispatch(actions.fetchBalance());
     },
   };

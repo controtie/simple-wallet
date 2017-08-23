@@ -3,7 +3,8 @@ import React from 'react';
 const Balance = (props) => {
   const {
     isLoggedIn,
-    fetchBalance,
+    onFetchBalance,
+    onFetchWallets,
   } = props;
 
   if (!isLoggedIn) {
@@ -13,7 +14,7 @@ const Balance = (props) => {
   return (
     <div>
       <p> Fetch Balance </p>
-      <button onClick={fetchBalance}>
+      <button onClick={onFetchWallets}>
         fetch balance
       </button>
     </div>
