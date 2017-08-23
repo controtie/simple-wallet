@@ -20,7 +20,7 @@ export const fetchingBalanceFail = () => {
   };
 };
 
-export const fetchWallets = (wallets) => {
+export const updateWallets = (wallets) => {
   return {
     type: types.BALANCE_UPDATE_WALLETS,
     wallets,
@@ -28,7 +28,7 @@ export const fetchWallets = (wallets) => {
 };
 
 // Fetch wallets on associated BitGo account
-export const onFetchWallets = (username, password, otp) => (dispatch) => {
+export const fetchWallets = (username, password, otp) => (dispatch) => {
   dispatch(fetchingBalanceStart());
   fetch('api/v1/bitgo/wallets')
     .then(isValidStatusCode)
@@ -42,7 +42,7 @@ export const onFetchWallets = (username, password, otp) => (dispatch) => {
 };
 
 // API call to fetch current provided wallet
-export const onFetchBalance = (username, password, otp) => (dispatch) => {
+export const fetchBalance = (username, password, otp) => (dispatch) => {
   fetch('api/v1/bitgo/wallets')
     .then(isValidStatusCode)
     .then(toJSON)
