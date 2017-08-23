@@ -31,6 +31,18 @@ router.post('/login', function(req, res) {
     });
 });
 
+router.get('/logout', function(req, res) {
+  bitgo.logout({}, function(err, response) {
+    if (err) {
+      console.log('Logout Failed!', err);
+      res.status(400).send({err});
+      return;
+    }
+    console.log('Logout Success!');
+    res.send({});
+  });
+});
+
 router.get('/fetchBalance', function(req, res) {
 });
 

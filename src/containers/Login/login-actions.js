@@ -3,7 +3,8 @@ import {
   isValidStatusCode,
   toJSON,
   makePostOptions,
-  isValidLogin } from '../../utils/api-helpers';
+  isValidLogin,
+} from '../../utils/api-helpers';
 import loginSelector from '../../selectors/login-selector';
 
 // REDUCER: logging-in-reducer.js

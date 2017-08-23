@@ -3,6 +3,7 @@ import React from 'react';
 const Logout = (props) => {
   const {
     isLoggedIn,
+    onLogout,
   } = props;
 
   if (!isLoggedIn) {
@@ -11,7 +12,7 @@ const Logout = (props) => {
 
   return (
     <div className="login-container">
-      <button>
+      <button onClick={onLogout}>
         Logout
       </button>
     </div>
