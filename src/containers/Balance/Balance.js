@@ -2,8 +2,13 @@ import React from 'react';
 
 const Balance = (props) => {
   const {
+    isLoggedIn,
     fetchBalance,
   } = props;
+
+  if (!isLoggedIn) {
+    return null;
+  }
 
   return (
     <div>

@@ -3,7 +3,14 @@ import Balance from './Balance';
 import * as actions from './balance-actions';
 
 const mapStateToProps = (state) => {
-  return state;
+  const {
+    login: {
+      isLoggedIn,
+    } = {},
+  } = state;
+  return {
+    isLoggedIn,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

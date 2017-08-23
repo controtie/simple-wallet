@@ -9,6 +9,7 @@ const mapStateToProps = (state) => {
       password,
       otp,
       isLoggingIn,
+      isLoggedIn
     } = {},
   } = state;
 
@@ -17,6 +18,7 @@ const mapStateToProps = (state) => {
     password,
     otp,
     isLoggingIn,
+    isLoggedIn,
   }
 };
 

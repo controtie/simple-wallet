@@ -4,6 +4,7 @@ import '../../styles/Login.css';
 const Login = (props) => {
   const {
     isLoggingIn,
+    isLoggedIn,
     username,
     password,
     otp,
@@ -12,6 +13,10 @@ const Login = (props) => {
     onUpdatePasswordField,
     onUpdateOTPField,
   } = props || {};
+
+  if (isLoggedIn) {
+    return null;
+  }
 
   if (isLoggingIn) {
     return (
