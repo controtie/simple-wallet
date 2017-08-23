@@ -4,22 +4,24 @@ import Balance from './Balance';
 import * as actions from './balance-actions';
 
 class BalanceContainer extends React.Component {
-  constructor() {
-    super();
-  }
 
   componentDidMount() {
     const {
       onFetchWallets,
+      onFetchBalance,
     } = this.props;
 
-    onFetchWallets();
+    onFetchWallets()
+    .then(() => {
+      onFetchBalance();
+    })
+    .catch(() => {
+      console.log('FetchWallets failed');
+    });
   }
   render() {
     const {
       wallets,
-      onFetchWallets,
-      onFetchBalance,
     } = this.props;
     return (
       <Balance
@@ -42,10 +44,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onFetchWallets: () => {
-      dispatch(actions.fetchWallets());
+      return dispatch(actions.fetchWallets());
     },
     onFetchBalance: () => {
-      dispatch(actions.fetchBalance());
+      return dispatch(actions.fetchBalance());
     },
   };
 };

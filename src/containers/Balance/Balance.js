@@ -16,7 +16,11 @@ const Balance = (props) => {
       </button>
       {
         Array.isArray(wallets) && wallets.map((wallet) => {
-          return <Wallet label={wallet.label} />
+          return (
+            <Wallet
+              key={wallet.id}
+              label={wallet.label} />
+          );
         })
       }
     </div>

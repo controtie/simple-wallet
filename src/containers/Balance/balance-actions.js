@@ -3,6 +3,7 @@ import {
   toJSON,
 } from '../../utils/api-helpers';
 import * as types from './balance-action-types';
+import walletIdSelector from '../../selectors/wallet-selector';
 
 export const fetchingBalanceStart = () => {
   return {
@@ -30,7 +31,7 @@ export const updateWallets = (wallets) => {
 // Fetch wallets on associated BitGo account
 export const fetchWallets = (username, password, otp) => (dispatch) => {
   dispatch(fetchingBalanceStart());
-  fetch('api/v1/bitgo/wallets')
+  return fetch('api/v1/bitgo/wallets')
     .then(isValidStatusCode)
     .then(toJSON)
     .then((json) => {
@@ -43,7 +44,11 @@ export const fetchWallets = (username, password, otp) => (dispatch) => {
 };
 
 // API call to fetch current provided wallet
-export const fetchBalance = (username, password, otp) => (dispatch) => {
+export const fetchBalance = (username, password, otp) => (dispatch, getState) => {
+  const state = getState();
+  const walletIds = walletIdSelector(state);
+  console.log('walletIds', walletIds);
+  /*
   fetch('api/v1/bitgo/wallets')
     .then(isValidStatusCode)
     .then(toJSON)
@@ -53,5 +58,6 @@ export const fetchBalance = (username, password, otp) => (dispatch) => {
     .catch((err) => {
       console.log('Error fetching wallets!', err);
     });
+  */
 };
 
