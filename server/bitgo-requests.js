@@ -20,11 +20,13 @@ router.post('/login', function(req, res) {
     { username, password, otp },
     function callback(err, response) {
       if (err) {
+        console.log('Login Failed!', err);
         res.status(400).send({err});
         return;
       }
       var token = response.token;
       var user = response.user;
+      console.log('Login Success!');
       res.send({token, user});
     });
 });
