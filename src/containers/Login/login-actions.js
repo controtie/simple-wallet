@@ -66,7 +66,7 @@ export const login = () => (dispatch, getState) => {
   const loginFields = loginSelector(state);
 
   if (!isValidLogin(loginFields)) {
-    return
+    return;
   }
 
   const payload = {
@@ -81,11 +81,13 @@ export const login = () => (dispatch, getState) => {
     .then(isValidStatusCode)
     .then(toJSON)
     .then((json) => {
+      console.log('Login Success!');
       dispatch(isLoggedIn());
       dispatch(notLoggingIn());
       console.log(json)
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log('Login Failed!', err)
       dispatch(isNotLoggedIn());
       dispatch(notLoggingIn());
     });

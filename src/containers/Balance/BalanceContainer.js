@@ -7,9 +7,13 @@ const mapStateToProps = (state) => {
     login: {
       isLoggedIn,
     } = {},
+    balance: {
+      wallets,
+    } = {},
   } = state;
   return {
     isLoggedIn,
+    wallets,
   };
 };
 

@@ -64,7 +64,7 @@ router.get('/wallets', function(req, res) {
       res.status(400).send({err});
       return;
     }
-    res.send({ wallets });
+    res.send(wallets.wallets);
   });
 });
 

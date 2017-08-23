@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import rootReducer from './root-reducer';
 import './styles/App.css';
-import Wallet from './components/Wallet';
+import RootComponent from './components/RootComponent';
 
 // 1. Configure redux store to accept 'redux-thunk' middleware
 // 2. createStore with root-reducer as application state tree
@@ -21,7 +21,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="App">
-          <Wallet />
+          <RootComponent />
         </div>
       </Provider>
     );

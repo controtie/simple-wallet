@@ -35,6 +35,7 @@ export const fetchWallets = (username, password, otp) => (dispatch) => {
     .then(toJSON)
     .then((json) => {
       console.log('json', json);
+      dispatch(updateWallets(json));
     })
     .catch((err) => {
       console.log('Error fetching wallets!', err);
