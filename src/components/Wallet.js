@@ -1,6 +1,7 @@
 import React from 'react';
-import Balance from '../containers/Balance/';
-import Login from '../containers/Login/';
+import Balance from '../containers/Balance/BalanceContainer';
+import Login from '../containers/Login/LoginContainer';
+import Logout from '../containers/Logout/LogoutContainer';
 
 // This component is the entry point for the two Wallet components:
 // 1. Send Payment component
@@ -12,6 +13,7 @@ const Wallet = (props) => {
       <p> Wallet goes here! </p>
       <Login />
       <Balance />
+      <Logout />
     </div>
   );
 };
