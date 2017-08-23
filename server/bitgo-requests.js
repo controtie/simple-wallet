@@ -43,6 +43,19 @@ router.get('/logout', function(req, res) {
   });
 });
 
+router.post('/unlock', function(req, res) {
+  const { otp } = req.body || {};
+  bitgo.unlock({ otp }, function(err, response) {
+    if (err) {
+      console.log('Unlock Failed!', err);
+      res.status(400).send({err});
+      return;
+    }
+    console.log('Unlock Success!');
+    res.send({});
+  });
+});
+
 router.get('/fetchBalance', function(req, res) {
 });
 
