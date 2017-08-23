@@ -1,6 +1,6 @@
 import * as types from '../login-action-types';
 
-const loggingIn = (state = false, action) => {
+const isLoggingIn = (state = false, action = {}) => {
   switch (action.type) {
     case types.LOGGING_IN_TRUE:
       return true;
@@ -11,5 +11,5 @@ const loggingIn = (state = false, action) => {
   }
 };
 
-export default loggingIn;
+export default isLoggingIn;
 

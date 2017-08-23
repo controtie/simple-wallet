@@ -8,8 +8,8 @@ import {
 import loginSelector from '../../selectors/login-selector';
 
 // REDUCER: logging-in-reducer.js
-// return true if calling login api
-// while true, displays loading spinner
+// true while calling login api
+// displays loading spinner
 export const loggingIn = () => {
   return {
     type: types.LOGGING_IN_TRUE,
