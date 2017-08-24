@@ -27,4 +27,10 @@ export const isValidLogin = (login) => {
   return !!login.username && !!login.password && !!login.otp;
 };
 
+export const isValidSendTransaction = (send) => {
+  return !!send.amount
+  && !!send.password
+  && !!send.otp
+  && !!send.destinationAddress;
+};
 

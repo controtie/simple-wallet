@@ -2,8 +2,10 @@ import {
   isValidStatusCode,
   toJSON,
   makePostOptions,
+  isValidSendTransaction,
 } from '../../utils/api-helpers';
 import * as types from './send-action-types';
+import sendFieldsSelector from '../../selectors/send-selector';
 
 export const sendCoinsStart = () => {
   return {
@@ -43,5 +45,30 @@ export const updateDestinationAddressField = (destinationAddress) => {
     type: types.SEND_COINS_DESTINATION_ADDRESS,
     destinationAddress,
   };
+};
+
+export const sendCoins = () => (dispatch, getState) => {
+  const state = getState();
+  const sendFields = sendFieldsSelector(state);
+
+  if (!isValidSendTransaction(sendFields)) {
+    return;
+  }
+
+  const payload = {
+    body: JSON.stringify(sendFields)
+  };
+
+  const options = makePostOptions(payload);
+
+  fetch('api/v1/bitgo/sendCoins', options)
+    .then(isValidStatusCode)
+    .then(toJSON)
+    .then((json) => {
+      console.log('Send Coins Success!', json);
+    })
+    .catch((err) => {
+      console.log('Send Coins Failed!', err)
+    });
 };
 

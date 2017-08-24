@@ -43,7 +43,6 @@ export const fetchWallets = (username, password, otp) => (dispatch) => {
     .then(isValidStatusCode)
     .then(toJSON)
     .then((json) => {
-      console.log('json', json);
       dispatch(updateWallets(json));
     })
     .catch((err) => {
@@ -55,7 +54,6 @@ export const fetchWallets = (username, password, otp) => (dispatch) => {
 export const fetchBalance = (username, password, otp) => (dispatch, getState) => {
   const state = getState();
   const walletIds = walletIdSelector(state);
-  console.log('walletIds', walletIds);
   const payload = { body: JSON.stringify(walletIds) };
   const options = makePostOptions(payload);
 
@@ -63,7 +61,6 @@ export const fetchBalance = (username, password, otp) => (dispatch, getState) =>
     .then(isValidStatusCode)
     .then(toJSON)
     .then((json) => {
-      console.log('json', json);
       dispatch(updateWallets(json));
     })
     .catch((err) => {

@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { goBack } from 'react-router-redux';
 import Send from './Send';
 import * as actions from './send-actions';
 
@@ -32,6 +33,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     onUpdateDestinationAddressField: (event) => {
       dispatch(actions.updateDestinationAddressField(event.target.value));
+    },
+    onSendCoins: () => {
+      dispatch(actions.sendCoins());
+    },
+    onNavigateBack: () => {
+      dispatch(goBack());
     },
   };
 };

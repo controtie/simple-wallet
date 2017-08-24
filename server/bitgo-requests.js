@@ -88,16 +88,17 @@ router.post('/sendCoins', function(req, res) {
   const {
     otp,
     walletId,
-    passphrase,
+    password,
     destinationAddress,
     amount,
   } = req.body;
+  console.log('req.body', req.body);
   bitgo.unlock({ otp })
     .then(() => {
       return bitgo.wallets().get({id: walletId})
     })
     .then((wallet) => {
-      return wallet.sendCoins({ address: destinationAddress, amount: amountSatoshis, passphrase: passphrase })
+      return wallet.sendCoins({ address: destinationAddress, amount: Number.parseInt(amount), walletPassphrase: password })
     })
     .then((success) => {
       console.log('send coins success!', success);
