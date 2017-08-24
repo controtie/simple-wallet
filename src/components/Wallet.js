@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import '../styles/Wallet.css';
 
-export default (props) => {
+const Wallet = (props) => {
   const {
     label,
     balance,
@@ -8,12 +10,26 @@ export default (props) => {
     onSelectWallet,
   } = props || {};
   return (
-    <div>
+    <div
+      className="wallet-container"
+      onClick={onSelectWallet}>
       <p> {label} </p>
       <p> {balance} </p>
       <p> {permissions} </p>
-      <button onClick={onSelectWallet}> select wallet </button>
     </div>
   );
 };
+
+Wallet.defaultProps = {
+  onSelectWallet: () => {},
+};
+
+Wallet.propTypes = {
+  label: PropTypes.string,
+  balance: PropTypes.number,
+  permissions: PropTypes.string,
+  onSelectWallet: PropTypes.func,
+};
+
+export default Wallet;
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
+import PropTypes from 'prop-types';
 import Balance from './Balance';
 import * as actions from './balance-actions';
 
@@ -57,6 +58,13 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(push('/send'));
     },
   };
+};
+
+BalanceContainer.propTypes = {
+  wallets: PropTypes.arrayOf(PropTypes.object),
+  onFetchWallets: PropTypes.func,
+  onFetchBalance: PropTypes.func,
+  onSelectWallet: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BalanceContainer);

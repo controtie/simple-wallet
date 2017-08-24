@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Wallet from '../../components/Wallet';
 import { toBTC } from '../../utils/data-helpers';
+import '../../styles/Balance.css';
 
 const Balance = (props) => {
   const {
@@ -9,8 +11,8 @@ const Balance = (props) => {
   } = props;
 
   return (
-    <div>
-      <p> Your Wallets </p>
+    <div className="balance-container">
+      <p> Select a Wallet </p>
       {
         Array.isArray(wallets) && wallets.map((wallet) => {
           const {
@@ -35,6 +37,11 @@ const Balance = (props) => {
 
 Balance.defaultProps = {
   onSelectWallet: () => {},
+};
+
+Balance.propTypes = {
+  wallets: PropTypes.arrayOf(PropTypes.object),
+  onSelectWallet: PropTypes.func,
 };
 
 export default Balance;
