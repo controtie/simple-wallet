@@ -1,25 +1,29 @@
 import React from 'react';
 import Wallet from '../../components/Wallet';
+import { toBTC } from '../../utils/data-helpers';
 
 const Balance = (props) => {
   const {
     wallets,
-    onFetchBalance,
-    onFetchWallets,
   } = props;
 
   return (
     <div>
-      <p> Fetch Balance </p>
-      <button onClick={onFetchWallets}>
-        fetch balance
-      </button>
+      <p> Your Wallets </p>
       {
         Array.isArray(wallets) && wallets.map((wallet) => {
+          const {
+            id,
+            label,
+            balance,
+            permissions,
+          } = wallet || {};
           return (
             <Wallet
-              key={wallet.id}
-              label={wallet.label} />
+              key={id}
+              label={label}
+              balance={toBTC(balance)}
+              permissions={permissions} />
           );
         })
       }
