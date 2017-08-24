@@ -9,6 +9,7 @@ import rootReducer from './root-reducer';
 import './styles/App.css';
 import Login from './containers/Login/';
 import Balance from './containers/Balance/';
+import Send from './containers/Send/';
 
 // Create new browser history, and allow it to intercept changes to redux store as middleware
 // Apply thunks to redux, allowing delayed calling of 'dispatch'
@@ -29,6 +30,7 @@ class App extends Component {
           <div className="App">
             <Route exact path="/" component={Login} />
             <Route path="/wallets" component={Balance} />
+            <Route path="/send" component={Send} />
           </div>
         </ConnectedRouter>
       </Provider>

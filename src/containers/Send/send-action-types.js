@@ -1,0 +1,4 @@
+export const SEND_COINS = 'SEND_COINS';
+export const SEND_COINS_SUCCESS = 'SEND_COINS_SUCCESS';
+export const SEND_COINS_FAILURE = 'SEND_COINS_FAILURE';
+

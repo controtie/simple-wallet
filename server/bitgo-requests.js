@@ -84,7 +84,29 @@ router.post('/walletBalances', function(req, res) {
     });
 });
 
-router.get('/fetchBalance', function(req, res) {
+router.post('/sendCoins', function(req, res) {
+  const {
+    otp,
+    walletId,
+    passphrase,
+    destinationAddress,
+    amount,
+  } = req.body;
+  bitgo.unlock({ otp })
+    .then(() => {
+      return bitgo.wallets().get({id: walletId})
+    })
+    .then((wallet) => {
+      return wallet.sendCoins({ address: destinationAddress, amount: amountSatoshis, passphrase: passphrase })
+    })
+    .then((success) => {
+      console.log('send coins success!', success);
+      res.send({});
+    })
+    .catch(err => {
+      console.log('Error fetching wallet!', err);
+      return process.exit(-1);
+    });
 });
 
 module.exports = router;
