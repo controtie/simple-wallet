@@ -24,6 +24,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "server": "node ./server/server.js"
+    "server": "node ./server/server.js",
+    "dev-server": "nodemon ./server/server.js"
   }
 }
