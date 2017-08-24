@@ -1,4 +1,4 @@
-import * as types from '../balance-action-types';
+import * as types from '../send-action-types';
 
 // This reducer will return true if coins are being sent
 // used for displaying loading spinner

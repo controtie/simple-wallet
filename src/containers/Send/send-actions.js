@@ -20,4 +20,28 @@ export const sendCoinsFail = () => {
     type: types.SEND_COINS_FAILURE,
   };
 };
+export const updateAmountField = (amount) => {
+  return {
+    type: types.SEND_COINS_AMOUNT,
+    amount,
+  };
+};
+export const updatePasswordField = (password) => {
+  return {
+    type: types.SEND_COINS_PASSWORD,
+    password,
+  };
+};
+export const updateOTPField = (otp) => {
+  return {
+    type: types.SEND_COINS_OTP,
+    otp,
+  };
+};
+export const updateDestinationAddressField = (destinationAddress) => {
+  return {
+    type: types.SEND_COINS_DESTINATION_ADDRESS,
+    destinationAddress,
+  };
+};
 
