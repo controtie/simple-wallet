@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { Route } from 'react-router';
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './root-reducer';
-import './styles/App.css';
+import ComponentContainer from './components/ComponentContainer';
 import Login from './containers/Login/';
 import Balance from './containers/Balance/';
 import Send from './containers/Send/';
@@ -27,14 +27,11 @@ class App extends Component {
     return (
       <Provider store={store}>
         <ConnectedRouter history={history}>
-          <div className="App">
-            <p> Simple BitGo Wallet </p>
-            <div className="component-container">
-              <Route exact path="/" component={Login} />
-              <Route path="/wallets" component={Balance} />
-              <Route path="/send" component={Send} />
-            </div>
-          </div>
+          <ComponentContainer>
+            <Route exact path="/" component={Login} />
+            <Route path="/wallets" component={Balance} />
+            <Route path="/send" component={Send} />
+          </ComponentContainer>
         </ConnectedRouter>
       </Provider>
     );

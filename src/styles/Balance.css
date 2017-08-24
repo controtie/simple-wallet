@@ -1,3 +1,10 @@
+.balance-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .balance-wallets {
   display: flex;
   flex-direction: row;
