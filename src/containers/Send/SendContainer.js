@@ -5,6 +5,9 @@ import * as actions from './send-actions';
 
 const mapStateToProps = (state) => {
   const {
+    login: {
+      isLoggedIn,
+    } = {},
     send: {
       otp,
       password,
@@ -13,6 +16,7 @@ const mapStateToProps = (state) => {
     } = {},
   } = state;
   return {
+    isLoggedIn,
     otp,
     password,
     amount,

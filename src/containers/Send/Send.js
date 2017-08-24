@@ -1,7 +1,9 @@
 import React from 'react';
+import RedirectToLogin from '../RedirectToLogin/';
 
 const Send = (props) => {
   const {
+    isLoggedIn,
     otp,
     password,
     amount,
@@ -13,6 +15,10 @@ const Send = (props) => {
     onNavigateBack,
     onSendCoins,
   } = props;
+
+  if (!isLoggedIn) {
+    return <RedirectToLogin />;
+  }
 
   return (
     <div>
