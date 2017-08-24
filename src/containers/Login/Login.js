@@ -1,5 +1,6 @@
 import React from 'react';
 import ActionButton from '../../components/ActionButton';
+import InputBox from '../../components/InputBox';
 import '../../styles/Login.css';
 import '../../styles/LoadingSpinner.css';
 
@@ -33,17 +34,18 @@ const Login = (props) => {
   return (
     <div className="login-container">
       <p> Login </p>
-      <p> username </p>
-      <input
+      <InputBox
+        email
+        label="Username"
         value={username}
         onChange={onUpdateUsernameField} />
-      <p> password </p>
-      <input
-        type="password"
+      <InputBox
+        password
+        label="Password"
         value={password}
         onChange={onUpdatePasswordField} />
-      <p> otp </p>
-      <input
+      <InputBox
+        label="Google Auth Password"
         value={otp}
         onChange={onUpdateOTPField} />
       <p> Login </p>

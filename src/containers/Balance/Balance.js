@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Wallet from '../../components/Wallet';
+import RedirectToLogin from '../RedirectToLogin/';
 import { toBTC } from '../../utils/data-helpers';
 import '../../styles/Balance.css';
 import '../../styles/LoadingSpinner.css';
@@ -8,9 +9,14 @@ import '../../styles/LoadingSpinner.css';
 const Balance = (props) => {
   const {
     wallets,
+    isLoggedIn,
     fetchingBalance,
     onSelectWallet,
   } = props;
+
+  if (!isLoggedIn) {
+    return <RedirectToLogin />;
+  }
 
   if (fetchingBalance) {
     return (

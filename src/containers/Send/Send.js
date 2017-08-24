@@ -1,5 +1,8 @@
 import React from 'react';
 import RedirectToLogin from '../RedirectToLogin/';
+import ActionButton from '../../components/ActionButton';
+import InputBox from '../../components/InputBox';
+import '../../styles/Send.css';
 
 const Send = (props) => {
   const {
@@ -21,28 +24,34 @@ const Send = (props) => {
   }
 
   return (
-    <div>
+    <div className="send-container">
       <p> Send Coins </p>
-      <p> Amount </p>
-      <input
-        type="number"
+      <InputBox
+        number
+        label="Amount"
         value={amount}
         onChange={onUpdateAmountField} />
-      <p> Destination Address </p>
-      <input
+      <InputBox
+        label="Destination Address"
         value={destinationAddress}
         onChange={onUpdateDestinationAddressField} />
-      <p> Password </p>
-      <input
-        type="password"
+      <InputBox
+        password
+        label="Password"
         value={password}
         onChange={onUpdatePasswordField} />
-      <p> OTP </p>
-      <input
+      <InputBox
+        label="Google Auth Password"
         value={otp}
         onChange={onUpdateOTPField} />
-      <button onClick={onSendCoins}> Submit </button>
-      <button onClick={onNavigateBack}> Back </button>
+      <ActionButton
+        classes="send-submit"
+        text="Submit"
+        onClick={onSendCoins} />
+      <ActionButton
+        classes="send-navigate-back"
+        text="Back"
+        onClick={onNavigateBack} />
     </div>
   );
 };

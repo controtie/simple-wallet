@@ -1,0 +1,16 @@
+.send-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.send-submit {
+  margin-top: 20px;
+}
+
+.send-navigate-back {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+

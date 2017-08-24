@@ -12,7 +12,6 @@ const ActionButton = (props) => {
   const classname = classes ?
     "action-button " + classes
     : "action-button";
-  console.log(classname);
 
   return (
     <button

@@ -23,12 +23,14 @@ class BalanceContainer extends React.Component {
   }
   render() {
     const {
+      isLoggedIn,
       wallets,
       fetchingBalance,
       onSelectWallet,
     } = this.props;
     return (
       <Balance
+        isLoggedIn={isLoggedIn}
         wallets={wallets}
         fetchingBalance={fetchingBalance}
         onSelectWallet={onSelectWallet}/>
@@ -38,12 +40,16 @@ class BalanceContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   const {
+    login: {
+      isLoggedIn,
+    } = {},
     balance: {
       wallets,
       fetchingBalance,
     } = {},
   } = state;
   return {
+    isLoggedIn,
     wallets,
     fetchingBalance,
   };
