@@ -1,3 +1,4 @@
+import { push } from 'react-router-redux';
 import * as types from './login-action-types';
 import {
   isValidStatusCode,
@@ -84,7 +85,8 @@ export const login = () => (dispatch, getState) => {
       console.log('Login Success!');
       dispatch(isLoggedIn());
       dispatch(notLoggingIn());
-      console.log(json)
+      console.log(json);
+      dispatch(push('/wallets'));
     })
     .catch((err) => {
       console.log('Login Failed!', err)

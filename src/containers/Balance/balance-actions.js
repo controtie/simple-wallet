@@ -29,6 +29,13 @@ export const updateWallets = (wallets) => {
   };
 };
 
+export const selectWallet = (walletId) => {
+  return {
+    type: types.BALANCE_SELECT_WALLET,
+    walletId,
+  };
+};
+
 // Fetch wallets on associated BitGo account
 export const fetchWallets = (username, password, otp) => (dispatch) => {
   dispatch(fetchingBalanceStart());

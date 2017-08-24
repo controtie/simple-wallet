@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 import Balance from './Balance';
 import * as actions from './balance-actions';
 
@@ -22,10 +23,12 @@ class BalanceContainer extends React.Component {
   render() {
     const {
       wallets,
+      onSelectWallet,
     } = this.props;
     return (
       <Balance
-        wallets={wallets} />
+        wallets={wallets}
+        onSelectWallet={onSelectWallet}/>
     );
   }
 }
@@ -48,6 +51,10 @@ const mapDispatchToProps = (dispatch) => {
     },
     onFetchBalance: () => {
       return dispatch(actions.fetchBalance());
+    },
+    onSelectWallet: (walletId) => {
+      dispatch(actions.selectWallet(walletId));
+      dispatch(push('/send'));
     },
   };
 };

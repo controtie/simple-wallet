@@ -1,3 +1,4 @@
+import { push } from 'react-router-redux';
 import { isNotLoggedIn } from '../Login/login-actions';
 import { isValidStatusCode } from '../../utils/api-helpers';
 
@@ -7,6 +8,7 @@ export const logout = () => (dispatch) => {
     .then(isValidStatusCode)
     .then(() => {
       dispatch(isNotLoggedIn());
+      dispatch(push('/'));
     })
     .catch((err) => {
       console.log('Logout Failed', err);

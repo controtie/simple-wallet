@@ -5,6 +5,7 @@ import { toBTC } from '../../utils/data-helpers';
 const Balance = (props) => {
   const {
     wallets,
+    onSelectWallet,
   } = props;
 
   return (
@@ -23,12 +24,17 @@ const Balance = (props) => {
               key={id}
               label={label}
               balance={toBTC(balance)}
-              permissions={permissions} />
+              permissions={permissions}
+              onSelectWallet={onSelectWallet.bind(undefined, id)} />
           );
         })
       }
     </div>
   );
+};
+
+Balance.defaultProps = {
+  onSelectWallet: () => {},
 };
 
 export default Balance;

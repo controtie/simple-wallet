@@ -11,7 +11,6 @@ const mapStateToProps = (state) => {
       destinationAddress,
     } = {},
   } = state;
-  console.log('send', state.send);
   return {
     otp,
     password,
