@@ -10,6 +10,7 @@ import ComponentContainer from './components/ComponentContainer';
 import Login from './containers/Login/';
 import Balance from './containers/Balance/';
 import Send from './containers/Send/';
+import SendComplete from './containers/SendComplete/';
 
 // Create new browser history, and allow it to intercept changes to redux store as middleware
 // Apply thunks to redux, allowing delayed calling of 'dispatch'
@@ -31,6 +32,7 @@ class App extends Component {
             <Route exact path="/" component={Login} />
             <Route path="/wallets" component={Balance} />
             <Route path="/send" component={Send} />
+            <Route path="/sendComplete" component={SendComplete} />
           </ComponentContainer>
         </ConnectedRouter>
       </Provider>
