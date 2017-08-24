@@ -6,6 +6,12 @@
   text-align: center;
 }
 
+.header-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .component-container {
   display: flex;
   justify-content: center;

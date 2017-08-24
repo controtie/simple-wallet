@@ -1,4 +1,5 @@
 import React from 'react';
+import Logout from '../containers/Logout/';
 import '../styles/ComponentContainer.css';
 
 export default (props) => {
@@ -11,6 +12,7 @@ export default (props) => {
       <div className="component-container">
         { children }
       </div>
+      <Logout />
     </div>
   );
 };

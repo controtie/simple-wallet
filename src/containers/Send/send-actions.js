@@ -1,3 +1,4 @@
+import { push } from 'react-router-redux';
 import {
   isValidStatusCode,
   toJSON,
@@ -66,6 +67,7 @@ export const sendCoins = () => (dispatch, getState) => {
     .then(toJSON)
     .then((json) => {
       console.log('Send Coins Success!', json);
+      dispatch(push('/wallets'));
     })
     .catch((err) => {
       console.log('Send Coins Failed!', err)

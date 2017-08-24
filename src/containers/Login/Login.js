@@ -1,4 +1,5 @@
 import React from 'react';
+import ActionButton from '../../components/ActionButton';
 import '../../styles/Login.css';
 import '../../styles/LoadingSpinner.css';
 
@@ -16,7 +17,7 @@ const Login = (props) => {
   } = props || {};
 
   if (isLoggedIn) {
-    return null;
+    return <p> You are already logged in! </p>;
   }
 
   if (isLoggingIn) {
@@ -46,9 +47,9 @@ const Login = (props) => {
         value={otp}
         onChange={onUpdateOTPField} />
       <p> Login </p>
-      <button onClick={onLogin}>
-        Login
-      </button>
+      <ActionButton
+        text="Login"
+        onClick={onLogin} />
     </div>
   );
 };

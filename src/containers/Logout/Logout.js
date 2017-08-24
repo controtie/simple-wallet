@@ -1,4 +1,6 @@
 import React from 'react';
+import ActionButton from '../../components/ActionButton';
+import '../../styles/Logout.css';
 
 const Logout = (props) => {
   const {
@@ -11,11 +13,10 @@ const Logout = (props) => {
   }
 
   return (
-    <div className="login-container">
-      <button onClick={onLogout}>
-        Logout
-      </button>
-    </div>
+    <ActionButton
+      classes="logout-button"
+      text="Logout"
+      onClick={onLogout} />
   );
 };
 

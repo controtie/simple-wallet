@@ -21,6 +21,15 @@ const Balance = (props) => {
     );
   }
 
+  if (wallets.length < 1) {
+    return (
+      <div>
+        <p> You have no wallets. </p>
+        <a href='http://bitgo.com'> Click here to go set one up! </a>
+      </div>
+    );
+  }
+
   return (
     <div className="balance-container">
       <p> Select a Wallet </p>
