@@ -18,17 +18,19 @@ class BalanceContainer extends React.Component {
       onFetchBalance();
     })
     .catch(() => {
-      console.log('FetchWallets failed');
+      console.log('Fetch Wallets failed');
     });
   }
   render() {
     const {
       wallets,
+      fetchingBalance,
       onSelectWallet,
     } = this.props;
     return (
       <Balance
         wallets={wallets}
+        fetchingBalance={fetchingBalance}
         onSelectWallet={onSelectWallet}/>
     );
   }
@@ -38,10 +40,12 @@ const mapStateToProps = (state) => {
   const {
     balance: {
       wallets,
+      fetchingBalance,
     } = {},
   } = state;
   return {
     wallets,
+    fetchingBalance,
   };
 };
 

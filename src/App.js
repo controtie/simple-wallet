@@ -28,9 +28,12 @@ class App extends Component {
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <div className="App">
-            <Route exact path="/" component={Login} />
-            <Route path="/wallets" component={Balance} />
-            <Route path="/send" component={Send} />
+            <p> Simple BitGo Wallet </p>
+            <div className="component-container">
+              <Route exact path="/" component={Login} />
+              <Route path="/wallets" component={Balance} />
+              <Route path="/send" component={Send} />
+            </div>
           </div>
         </ConnectedRouter>
       </Provider>

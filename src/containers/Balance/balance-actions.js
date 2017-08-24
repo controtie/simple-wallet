@@ -46,6 +46,7 @@ export const fetchWallets = (username, password, otp) => (dispatch) => {
       dispatch(updateWallets(json));
     })
     .catch((err) => {
+      dispatch(fetchingBalanceFail());
       console.log('Error fetching wallets!', err);
     });
 };
@@ -61,9 +62,11 @@ export const fetchBalance = (username, password, otp) => (dispatch, getState) =>
     .then(isValidStatusCode)
     .then(toJSON)
     .then((json) => {
+      dispatch(fetchingBalanceSuccess());
       dispatch(updateWallets(json));
     })
     .catch((err) => {
+      dispatch(fetchingBalanceFail());
       console.log('Error fetching wallets!', err);
     });
 };

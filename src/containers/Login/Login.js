@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../styles/Login.css';
+import '../../styles/LoadingSpinner.css';
 
 const Login = (props) => {
   const {
@@ -21,7 +22,8 @@ const Login = (props) => {
   if (isLoggingIn) {
     return (
       <div className="login-container">
-        <div className="login-spinner">
+        <p> Login </p>
+        <div className="loading-spinner">
         </div>
       </div>
     )
@@ -29,6 +31,7 @@ const Login = (props) => {
 
   return (
     <div className="login-container">
+      <p> Login </p>
       <p> username </p>
       <input
         value={username}
