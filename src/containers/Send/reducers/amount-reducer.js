@@ -1,6 +1,6 @@
 import * as types from '../send-action-types';
 
-const amount = (state = '0000000', action = {}) => {
+const amount = (state = 0, action = {}) => {
   switch (action.type) {
     case types.SEND_COINS_AMOUNT:
       return action.amount;

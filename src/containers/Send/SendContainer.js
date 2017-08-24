@@ -5,16 +5,36 @@ import * as actions from './send-actions';
 const mapStateToProps = (state) => {
   const {
     send: {
-      wallets,
+      otp,
+      password,
+      amount,
+      destinationAddress,
     } = {},
   } = state;
+  console.log('send', state.send);
   return {
-    wallets,
+    otp,
+    password,
+    amount,
+    destinationAddress,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    onUpdateAmountField: (event) => {
+      dispatch(actions.updateAmountField(event.target.value));
+    },
+    onUpdatePasswordField: (event) => {
+      dispatch(actions.updatePasswordField(event.target.value));
+    },
+    onUpdateOTPField: (event) => {
+      dispatch(actions.updateOTPField(event.target.value));
+    },
+    onUpdateDestinationAddressField: (event) => {
+      dispatch(actions.updateDestinationAddressField(event.target.value));
+    },
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Send);
