@@ -2,11 +2,13 @@ import React from 'react';
 import RedirectToLogin from '../RedirectToLogin/';
 import ActionButton from '../../components/ActionButton';
 import InputBox from '../../components/InputBox';
+import '../../styles/LoadingSpinner.css';
 import '../../styles/Send.css';
 
 const Send = (props) => {
   const {
     isLoggedIn,
+    sending,
     otp,
     password,
     amount,
@@ -21,6 +23,15 @@ const Send = (props) => {
 
   if (!isLoggedIn) {
     return <RedirectToLogin />;
+  }
+
+  if (sending) {
+    return (
+      <div className="send-container">
+        <p>Sending Coins...</p>
+        <div className="loading-spinner"/>
+      </div>
+    );
   }
 
   return (

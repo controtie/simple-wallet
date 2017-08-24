@@ -62,15 +62,19 @@ export const sendCoins = () => (dispatch, getState) => {
 
   const options = makePostOptions(payload);
 
+  dispatch(sendCoinsStart());
   fetch('api/v1/bitgo/sendCoins', options)
     .then(isValidStatusCode)
     .then(toJSON)
     .then((json) => {
+      dispatch(sendCoinsSuccess());
       console.log('Send Coins Success!', json);
-      dispatch(push('/wallets'));
+      dispatch(push('/sendComplete'));
     })
     .catch((err) => {
+      dispatch(sendCoinsFail());
       console.log('Send Coins Failed!', err)
+      dispatch(push('/sendComplete'));
     });
 };
 

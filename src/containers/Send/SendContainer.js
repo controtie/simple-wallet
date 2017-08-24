@@ -13,6 +13,9 @@ const mapStateToProps = (state) => {
       password,
       amount,
       destinationAddress,
+      sendCoins: {
+        sending,
+      } = {},
     } = {},
   } = state;
   return {
@@ -21,6 +24,7 @@ const mapStateToProps = (state) => {
     password,
     amount,
     destinationAddress,
+    sending,
   };
 };
 
