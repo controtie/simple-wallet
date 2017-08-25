@@ -3,9 +3,13 @@ const router     = express.Router();
 const BitGoJS    = require('bitgo');
 const bodyParser = require('body-parser');
 
-// Initialize bitgo sdk with local accessToken
+const useProduction = process.env.REACT_APP_PRODUCTION === 'true' ?
+  {env: 'prod'}
+  : {env: 'test'};
+
+// Initialize bitgo sdk
 const bitgo =
-  new BitGoJS.BitGo({ env: 'test', accessToken: process.env.ACCESS_TOKEN }); 
+  new BitGoJS.BitGo(useProduction);
 
 // Automatically parse JSON on any inbound requests
 router.use(bodyParser.json());

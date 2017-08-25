@@ -35,5 +35,14 @@ To run this client:
 3. ```npm start```
 4. run tests with ```npm run test```
 
+In order to use this application you will need a BitGo account.
+You can get one [here](https://www.bitgo.com)
+
+This application by default runs on the testnet, [using BitGo testnet accounts.](https://test.bitgo.com)
+For testnet account, you can always supply 0000000 as your Google Auth password
+
+To access your production wallets set the local env variable:
+```export REACT_APP_PRODUCTION=true```
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 

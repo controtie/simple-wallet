@@ -10,11 +10,11 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding-left: 30px;
 }
 
 .balance-wallets {
   display: flex;
+  justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
 }
