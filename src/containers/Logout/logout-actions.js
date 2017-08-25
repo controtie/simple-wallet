@@ -11,6 +11,7 @@ export const logout = () => (dispatch) => {
       dispatch(push('/'));
     })
     .catch((err) => {
+      dispatch(push('/'));
       console.log('Logout Failed', err);
     });
 };

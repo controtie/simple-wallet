@@ -3,40 +3,47 @@ var router     = express.Router();
 var BitGoJS    = require('bitgo');
 var bodyParser = require('body-parser');
 
+// Initialize bitgo sdk with local accessToken
 const bitgo =
   new BitGoJS.BitGo({ env: 'test', accessToken: process.env.ACCESS_TOKEN }); 
 
+// Automatically parse JSON on any inbound requests
 router.use(bodyParser.json());
 
-router.post('/login', function(req, res) {
+// Login to User BitGo account
+router.post('/login', (req, res) => {
   const {
     username,
     password,
     otp,
   } = req.body || {};
 
-  bitgo.authenticate({ username, password, otp })
-    .then(response => {
-      var token = response.token;
-      var user = response.user;
-      console.log('Login Success!');
-      res.send({token, user});
-    })
-    .catch(err => {
-      bitgo.session({})
+  // Check if session is already valid
+  bitgo.session({})
+  .then(response => {
+    console.log('User was already logged in!');
+    res.send({user: response});
+  })
+  .catch(error => {
+    
+    // If session is invalid, attempt login
+    bitgo.authenticate({ username, password, otp })
       .then(response => {
-        console.log('User was already logged in!');
-        res.send({user: response});
+        var token = response.token;
+        var user = response.user;
+        console.log('Login Success!');
+        res.send({token, user});
       })
-      .catch(error => {
+      .catch(err => {
         console.log('Login Failed!', error);
         res.status(400).send({err: error});
-      })
-    });
+      });
+  })
 });
 
-router.get('/logout', function(req, res) {
-  bitgo.logout({}, function(err, response) {
+// Logout of BitGo account
+router.get('/logout', (req, res) => {
+  bitgo.logout({},(err, response) => {
     if (err) {
       console.log('Logout Failed!', err);
       res.status(400).send({err});
@@ -47,22 +54,10 @@ router.get('/logout', function(req, res) {
   });
 });
 
-router.post('/unlock', function(req, res) {
-  const { otp } = req.body || {};
-  bitgo.unlock({ otp }, function(err, response) {
-    if (err) {
-      console.log('Unlock Failed!', err);
-      res.status(400).send({err});
-      return;
-    }
-    console.log('Unlock Success!');
-    res.send({});
-  });
-});
-
-router.get('/wallets', function(req, res) {
+// Fetch wallets for current logged in user
+router.get('/wallets', (req, res) => {
   const wallets = bitgo.wallets();
-  wallets.list({}, function callback(err, wallets) {
+  wallets.list({}, (err, wallets) => {
     if (err) {
       console.log('Fetch Wallets Failed'. err);
       res.status(400).send({err});
@@ -72,7 +67,8 @@ router.get('/wallets', function(req, res) {
   });
 });
 
-router.post('/walletBalances', function(req, res) {
+// Fetch balances for current logged in user
+router.post('/walletBalances', (req, res) => {
   const walletIds = req.body;
   const wallets = bitgo.wallets();
   const balanceRequests = walletIds.map(id => wallets.get(id));
@@ -87,7 +83,8 @@ router.post('/walletBalances', function(req, res) {
     });
 });
 
-router.post('/sendCoins', function(req, res) {
+// Send coins from provided 'walletId' to 'destinationAddress'
+router.post('/sendCoins', (req, res) => {
   const {
     otp,
     walletId,
@@ -96,11 +93,14 @@ router.post('/sendCoins', function(req, res) {
     amount,
   } = req.body;
 
+  // First unlock BitGo account to allow spending
   bitgo.unlock({ otp })
     .then(() => {
+      // Fetch wallet of provided walletId
       return bitgo.wallets().get({id: walletId})
     })
     .then((wallet) => {
+       // Initiate send transaction of 'amount' to 'destinationAddress'
       return wallet.sendCoins({ address: destinationAddress, amount: Number.parseInt(amount), walletPassphrase: password })
     })
     .then((success) => {
