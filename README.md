@@ -1,7 +1,7 @@
 Simple Wallet
 ============
 
-Simple Wallet is a basic interface to BitGo's wallet API
+Simple Wallet is a basic interface to BitGo's wallet API.  
 You can view your wallet balances, and send your coins to any bitcoin address.
 
 <img src="https://media.giphy.com/media/l1J9ym1tXM9JKl18Q/giphy.gif" width="300px"/>
@@ -22,7 +22,7 @@ Therefore:
 - Any data returned from api calls should be stored as the raw response.
 - Any intermediary manipulations that make handling of data simpler can be done and shared in composable, memoized selectors
 
-- All components are either presentational (dealing with styling/layout) or are logical (handling api calls, life-cycle methods).
+- All components are either presentational (dealing with styling/layout) or are logical (handling api calls, life-cycle methods).  
 This is the distiction between Components and their Containers.
 - Whenever possible, reuse components for stylistic consistency.
 
@@ -39,7 +39,7 @@ To run this client:
 In order to use this application you will need a BitGo account.
 You can get one [here](https://www.bitgo.com)
 
-This application by default runs on the testnet, [using BitGo testnet accounts.](https://test.bitgo.com)
+This application by default runs on the testnet, [using BitGo testnet accounts.](https://test.bitgo.com)  
 For testnet accounts, you can always supply ```0000000``` as your Google Auth password.
 
 To access your production wallets set the local env variable:
