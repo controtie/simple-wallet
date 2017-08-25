@@ -9,6 +9,9 @@ const walletSelector = (state) => {
   return wallets;
 };
 
+// since this selection requires some data manipulation
+// (mapping wallets to walletIds)
+// it makes sense to memoize the process with 'reselect'
 export default createSelector(
   [ walletSelector ],
   (wallets) => {

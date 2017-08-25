@@ -12,10 +12,14 @@ import Balance from './containers/Balance/';
 import Send from './containers/Send/';
 import SendComplete from './containers/SendComplete/';
 
-// Create new browser history, and allow it to intercept changes to redux store as middleware
-// Apply thunks to redux, allowing delayed calling of 'dispatch'
+// Create new browser history
+// Create middleware to allow updates to broswer history via redux dispatch
 const history = createHistory();
 const historyMiddleware = routerMiddleware(history);
+
+// Apply middlewares, create store with rootReducer as state tree
+// redux-thunk middleware allows delayed evaluation of 'dispatch',
+// useful for dispatching state updates after promises are resolved
 const createStoreWithMiddleware = applyMiddleware(thunk, historyMiddleware)(createStore);
 const store = createStoreWithMiddleware(rootReducer);
 

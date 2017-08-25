@@ -27,7 +27,7 @@ const sendSelector = (state) => {
   };
 };
 
-
+// pull and combine data from two separate selectors,
 export default createSelector(
   [ sendSelector, selectedWalletSelector ],
   (sendInfo, selectedWallet) => {
