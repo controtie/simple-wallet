@@ -1,6 +1,6 @@
 import * as types from '../balance-action-types';
 
-// This reducer will return true if Balance is currently being fetched,
+// This reducer will be true if Balance is currently being fetched,
 // used for displaying loading spinner
 const fetchingBalance = (state = false, action = {}) => {
   switch (action.type) {

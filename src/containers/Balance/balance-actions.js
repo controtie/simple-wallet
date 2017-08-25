@@ -6,6 +6,8 @@ import {
 import * as types from './balance-action-types';
 import walletIdSelector from '../../selectors/wallet-selector';
 
+// fetching-balance-reducer.js - the status of the fetching-wallets request
+// controls a loading spinner
 export const fetchingBalanceStart = () => {
   return {
     type: types.BALANCE_GET_BALANCE,
@@ -22,6 +24,7 @@ export const fetchingBalanceFail = () => {
   };
 };
 
+// wallets-reducer.js - updates the list of all of User's available wallets
 export const updateWallets = (wallets) => {
   return {
     type: types.BALANCE_UPDATE_WALLETS,
@@ -29,6 +32,8 @@ export const updateWallets = (wallets) => {
   };
 };
 
+// selected-wallet-reducer.js - stores the id of the selected wallet
+// See: BalanceContainer.js and Balance.js for usage
 export const selectWallet = (walletId) => {
   return {
     type: types.BALANCE_SELECT_WALLET,
@@ -36,13 +41,14 @@ export const selectWallet = (walletId) => {
   };
 };
 
-// Fetch wallets on associated BitGo account
+// Fetch all wallets for User's BitGo account
 export const fetchWallets = (username, password, otp) => (dispatch) => {
   dispatch(fetchingBalanceStart());
   return fetch('api/v1/bitgo/wallets')
     .then(isValidStatusCode)
     .then(toJSON)
     .then((json) => {
+      // update store with retrieved list of all wallets
       dispatch(updateWallets(json));
     })
     .catch((err) => {
@@ -51,7 +57,7 @@ export const fetchWallets = (username, password, otp) => (dispatch) => {
     });
 };
 
-// API call to fetch current provided wallet
+// Fetch all balances for all of User's BitGo wallets
 export const fetchBalance = (username, password, otp) => (dispatch, getState) => {
   const state = getState();
   const walletIds = walletIdSelector(state);
@@ -63,6 +69,7 @@ export const fetchBalance = (username, password, otp) => (dispatch, getState) =>
     .then(toJSON)
     .then((json) => {
       dispatch(fetchingBalanceSuccess());
+      // update store with retrieved list of all wallets + meta data
       dispatch(updateWallets(json));
     })
     .catch((err) => {

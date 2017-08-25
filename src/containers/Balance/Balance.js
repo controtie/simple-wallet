@@ -6,6 +6,7 @@ import { toBTC, getSpendablePermission } from '../../utils/data-helpers';
 import '../../styles/Balance.css';
 import '../../styles/LoadingSpinner.css';
 
+// Displays a list of all wallets using <Wallet /> component
 const Balance = (props) => {
   const {
     wallets,
@@ -41,6 +42,7 @@ const Balance = (props) => {
       <p> Select a Wallet </p>
       <div className="balance-wallets">
         {
+          // Display all wallets using <Wallet /> component
           Array.isArray(wallets) && wallets.map((wallet) => {
             const {
               id,

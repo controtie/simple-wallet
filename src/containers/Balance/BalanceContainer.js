@@ -5,8 +5,14 @@ import PropTypes from 'prop-types';
 import Balance from './Balance';
 import * as actions from './balance-actions';
 
+// Other container components do not have class components because they do
+// not need access to component life-cycle methods
+// Here we want to automatically fetch all wallets when user enter this screen
+// (after sending a payment, or logging in) so we'll need to hook into the
+// componentDidMount() life-cycle event.
 class BalanceContainer extends React.Component {
 
+  // When Balance is done being loaded onto the page, fetch wallet balances.
   componentDidMount() {
     const {
       onFetchWallets,
@@ -38,6 +44,8 @@ class BalanceContainer extends React.Component {
   }
 }
 
+// Select pieces of store and pass them as props into BalanceContainer below
+// Balance Container will use some, and pass the rest to <Balance /> from  Balance.js
 const mapStateToProps = (state) => {
   const {
     login: {
@@ -55,6 +63,9 @@ const mapStateToProps = (state) => {
   };
 };
 
+// Supply actions defined in balance-actions.js with 'dispatch' and pass them
+// as props to BalanceContainer. Balance will use some, and pass the rest to
+// <Balance /> from Balance.js
 const mapDispatchToProps = (dispatch) => {
   return {
     onFetchWallets: () => {
