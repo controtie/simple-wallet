@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import walletSelector from './wallet-selector';
+import selectedWalletSelector from './selected-wallet-selector';
 
 const sendSelector = (state) => {
   const {
@@ -29,8 +29,8 @@ const sendSelector = (state) => {
 
 
 export default createSelector(
-  [ sendSelector, walletSelector ],
-  (sendInfo, wallets) => {
+  [ sendSelector, selectedWalletSelector ],
+  (sendInfo, selectedWallet) => {
     const {
       amount,
       destinationAddress,
@@ -43,7 +43,7 @@ export default createSelector(
       balance,
       id,
       label,
-    } = wallets;
+    } = selectedWallet;
 
     return {
       amount,

@@ -16,18 +16,18 @@ const walletsSelector = (state) => {
 
 export default createSelector(
   [ walletsSelector ],
-  (wallets) => {
+  (allWallets) => {
     const {
       id,
       wallets,
-    } = wallets;
+    } = allWallets;
 
     const selectedWallet = wallets.find(wallet => wallet.id === id);
     const {
-      id,
       label,
       balance,
-    } = selectedWallet;
+    } = selectedWallet || {};
+
     return {
       id,
       label,

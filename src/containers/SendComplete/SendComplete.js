@@ -48,7 +48,7 @@ SendComplete.defaultProps = {
 SendComplete.propTypes = {
   success: PropTypes.bool,
   isLoggedIn: PropTypes.bool,
-  amount: PropTypes.number,
+  amount: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   destinationAddress: PropTypes.string,
   onRedirectToWallet: PropTypes.func,
   onRedirectToSend: PropTypes.func,

@@ -17,8 +17,8 @@ class BalanceContainer extends React.Component {
     .then(() => {
       onFetchBalance();
     })
-    .catch(() => {
-      console.log('Fetch Wallets failed');
+    .catch(err => {
+      console.log('Fetch Wallets failed', err);
     });
   }
   render() {

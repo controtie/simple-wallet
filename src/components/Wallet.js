@@ -22,7 +22,7 @@ const Wallet = (props) => {
       className="wallet-container"
       onClick={handleOnSelect}>
       <p> {label} </p>
-      <p> {trimBalance(balance)} </p>
+      <p> {'\u0243'} {trimBalance(balance)} </p>
       {
         !isSpendable ?
         <p> permissions required </p>

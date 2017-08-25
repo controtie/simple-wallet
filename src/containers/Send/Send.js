@@ -8,6 +8,8 @@ import '../../styles/Send.css';
 
 const Send = (props) => {
   const {
+    label,
+    balance,
     isLoggedIn,
     sending,
     otp,
@@ -37,7 +39,8 @@ const Send = (props) => {
 
   return (
     <div className="send-container">
-      <p> Send Coins </p>
+      <p> Send Coins from {label}</p>
+      <p> Balance: {'\u0243'} {balance}</p>
       <InputBox
         number
         label="Amount"
@@ -78,11 +81,13 @@ Send.defaultProps = {
 };
 
 Send.propTypes = {
+  label: PropTypes.string,
+  balance: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   isLoggedIn: PropTypes.bool,
   sending: PropTypes.bool,
   otp: PropTypes.string,
   password: PropTypes.string,
-  amount: PropTypes.number,
+  amount: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   destinationAddress: PropTypes.string,
   onUpdateAmountField: PropTypes.func,
   onUpdatePasswordField: PropTypes.func,
