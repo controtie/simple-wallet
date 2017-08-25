@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ActionButton from '../../components/ActionButton';
 import InputBox from '../../components/InputBox';
-import '../../styles/Login.css';
 import '../../styles/LoadingSpinner.css';
 
 // The Login form

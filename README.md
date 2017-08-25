@@ -29,6 +29,7 @@ This is the distiction between Components and their Containers.
 Getting Started
 ---------------
 To run this client:
+
 0. Ensure you have node and npm installed
 1. clone this repo to a local directory ```git clone https://github.com/controtie/simple-wallet.git```
 2. install all node dependencies ```npm install```
@@ -39,7 +40,7 @@ In order to use this application you will need a BitGo account.
 You can get one [here](https://www.bitgo.com)
 
 This application by default runs on the testnet, [using BitGo testnet accounts.](https://test.bitgo.com)
-For testnet account, you can always supply 0000000 as your Google Auth password
+For testnet accounts, you can always supply ```0000000``` as your Google Auth password.
 
 To access your production wallets set the local env variable:
 ```export REACT_APP_PRODUCTION=true```
