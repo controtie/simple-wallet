@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Wallet from '../../components/Wallet';
 import RedirectToLogin from '../RedirectToLogin/';
-import { toBTC } from '../../utils/data-helpers';
+import { toBTC, getSpendablePermission } from '../../utils/data-helpers';
 import '../../styles/Balance.css';
 import '../../styles/LoadingSpinner.css';
 
@@ -48,12 +48,13 @@ const Balance = (props) => {
               balance,
               permissions,
             } = wallet || {};
+            const isSpendable = getSpendablePermission(permissions);
             return (
               <Wallet
                 key={id}
                 label={label}
                 balance={toBTC(balance)}
-                permissions={permissions}
+                isSpendable={isSpendable}
                 onSelectWallet={onSelectWallet.bind(undefined, id)} />
             );
           })

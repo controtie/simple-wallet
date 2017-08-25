@@ -7,16 +7,27 @@ const Wallet = (props) => {
   const {
     label,
     balance,
-    permissions,
     onSelectWallet,
+    isSpendable,
   } = props || {};
+
+  const handleOnSelect = () => {
+    if (isSpendable) {
+      onSelectWallet();
+    }
+  };
+
   return (
     <div
       className="wallet-container"
-      onClick={onSelectWallet}>
+      onClick={handleOnSelect}>
       <p> {label} </p>
       <p> {trimBalance(balance)} </p>
-      <p> {permissions} </p>
+      {
+        !isSpendable ?
+        <p> permissions required </p>
+        : <p> ready to use </p>
+      }
     </div>
   );
 };
