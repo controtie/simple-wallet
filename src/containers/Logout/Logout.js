@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ActionButton from '../../components/ActionButton';
 import '../../styles/Logout.css';
 
+// Displays connected logout button if user is logged in
 const Logout = (props) => {
   const {
     isLoggedIn,
