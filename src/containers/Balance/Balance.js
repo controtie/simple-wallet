@@ -20,7 +20,7 @@ const Balance = (props) => {
 
   if (fetchingBalance) {
     return (
-      <div className="balance-container">
+      <div className="fetching-balance-container">
         <p> Fetching Balances... </p>
         <div className="loading-spinner"/>
       </div>

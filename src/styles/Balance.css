@@ -1,3 +1,10 @@
+.fetching-balance-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .balance-container {
   display: flex;
   justify-content: center;

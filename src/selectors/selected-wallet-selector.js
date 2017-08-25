@@ -1,20 +1,37 @@
 import { createSelector } from 'reselect';
 
-const selectedWallet = (state) => {
+const walletsSelector = (state) => {
   const {
     balance: {
-      selectedWallet: walletId,
+      selectedWallet: id,
       wallets,
     } = {},
   } = state;
 
   return {
-    walletId,
+    id,
     wallets,
   };
 };
 
 export default createSelector(
-  [ selectedWallet ],
-  (wallet) => {
+  [ walletsSelector ],
+  (wallets) => {
+    const {
+      id,
+      wallets,
+    } = wallets;
+
+    const selectedWallet = wallets.find(wallet => wallet.id === id);
+    const {
+      id,
+      label,
+      balance,
+    } = selectedWallet;
+    return {
+      id,
+      label,
+      balance,
+    };
   });
+

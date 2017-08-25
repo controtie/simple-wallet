@@ -6,7 +6,7 @@ import {
   isValidSendTransaction,
 } from '../../utils/api-helpers';
 import * as types from './send-action-types';
-import sendFieldsSelector from '../../selectors/send-selector';
+import sendCoinsSelector from '../../selectors/send-coins-selector';
 
 export const sendCoinsStart = () => {
   return {
@@ -50,7 +50,7 @@ export const updateDestinationAddressField = (destinationAddress) => {
 
 export const sendCoins = () => (dispatch, getState) => {
   const state = getState();
-  const sendFields = sendFieldsSelector(state);
+  const sendFields = sendCoinsSelector(state);
 
   if (!isValidSendTransaction(sendFields)) {
     return;

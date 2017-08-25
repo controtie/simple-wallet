@@ -71,8 +71,11 @@ describe('Login Reducers behave with passed actions', () => {
       const outcome = destinationAddress(undefined, {});
       expect(outcome).toEqual('');
     });
-    it(`returns passed in object for ${actions.updateDestinationAddressField().type}`, () => {
-      const outcome = destinationAddress(undefined, actions.updateDestinationAddressField('test-destinationAddress'));
+    it(`returns passed in object for ${actions.updateDestinationAddressField().type}`,
+    () => {
+      const outcome =
+        destinationAddress(undefined,
+        actions.updateDestinationAddressField('test-destinationAddress'));
       expect(outcome).toEqual('test-destinationAddress');
     });
   });

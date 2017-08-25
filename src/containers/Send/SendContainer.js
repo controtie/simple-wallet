@@ -1,32 +1,11 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import Send from './Send';
+import sendSelector from '../../selectors/send-selector';
 import * as actions from './send-actions';
 
 const mapStateToProps = (state) => {
-  const {
-    login: {
-      isLoggedIn,
-    } = {},
-    send: {
-      otp,
-      password,
-      amount,
-      destinationAddress,
-      sendCoins: {
-        sending,
-      } = {},
-    } = {},
-  } = state;
-
-  return {
-    isLoggedIn,
-    otp,
-    password,
-    amount,
-    destinationAddress,
-    sending,
-  };
+  return sendSelector(state);
 };
 
 const mapDispatchToProps = (dispatch) => {

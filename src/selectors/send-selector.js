@@ -1,24 +1,60 @@
 import { createSelector } from 'reselect';
+import walletSelector from './wallet-selector';
 
-export default (state) => {
+const sendSelector = (state) => {
   const {
-    balance: {
-      selectedWallet: walletId,
+    login: {
+      isLoggedIn,
     } = {},
     send: {
+      amount,
+      destinationAddress,
       otp,
       password,
-      destinationAddress,
-      amount,
+      sendCoins: {
+        sending,
+      } = {},
     } = {},
   } = state;
 
   return {
-    walletId,
+    amount,
+    destinationAddress,
+    isLoggedIn,
     otp,
     password,
-    destinationAddress,
-    amount,
+    sending,
   };
 };
+
+
+export default createSelector(
+  [ sendSelector, walletSelector ],
+  (sendInfo, wallets) => {
+    const {
+      amount,
+      destinationAddress,
+      isLoggedIn,
+      otp,
+      password,
+      sending,
+    } = sendInfo;
+    const {
+      balance,
+      id,
+      label,
+    } = wallets;
+
+    return {
+      amount,
+      balance,
+      destinationAddress,
+      id,
+      isLoggedIn,
+      label,
+      otp,
+      password,
+      sending,
+    };
+  });
 
