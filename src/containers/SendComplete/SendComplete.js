@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ActionButton from '../../components/ActionButton';
 import { toBTC } from '../../utils/data-helpers';
 import RedirectToLogin from '../RedirectToLogin/';
@@ -30,6 +31,18 @@ const SendComplete = (props) => {
         onClick={onRedirectToWallet} />
     </div>
   );
+};
+
+SendComplete.defaultProps = {
+  onRedirectToWallet: () => {},
+};
+
+SendComplete.propTypes = {
+  success: PropTypes.bool,
+  isLoggedIn: PropTypes.bool,
+  amount: PropTypes.number,
+  destinationAddress: PropTypes.string,
+  onRedirectToWallet: PropTypes.func,
 };
 
 export default SendComplete;

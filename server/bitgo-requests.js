@@ -15,18 +15,23 @@ router.post('/login', function(req, res) {
     otp,
   } = req.body || {};
 
-  bitgo.authenticate(
-    { username, password, otp },
-    function callback(err, response) {
-      if (err) {
-        console.log('Login Failed!', err);
-        res.status(400).send({err});
-        return;
-      }
+  bitgo.authenticate({ username, password, otp })
+    .then(response => {
       var token = response.token;
       var user = response.user;
       console.log('Login Success!');
       res.send({token, user});
+    })
+    .catch(err => {
+      bitgo.session({})
+      .then(response => {
+        console.log('User was already logged in!');
+        res.send({user: response});
+      })
+      .catch(error => {
+        console.log('Login Failed!', error);
+        res.status(400).send({err: error});
+      })
     });
 });
 
