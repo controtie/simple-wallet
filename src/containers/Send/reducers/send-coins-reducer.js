@@ -5,8 +5,8 @@ const defaultState = {
   success: false,
 };
 
-// This reducer will return true if coins are being sent
-// used for displaying loading spinner, and controlling SendComplete screen
+// This piece of state relects the sending status of a given transaction
+// used for displaying a loading spinner, and controlling SendComplete screen
 const sendingCoins = (state = defaultState, action = {}) => {
   switch (action.type) {
     case types.SEND_COINS:

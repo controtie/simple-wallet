@@ -4,6 +4,8 @@ import ActionButton from '../../components/ActionButton';
 import { toBTC } from '../../utils/data-helpers';
 import RedirectToLogin from '../RedirectToLogin/';
 
+// This component is displayed when sendCoins resolves
+// This component handles messaging both when transactions are successful and failed
 const SendComplete = (props) => {
   const {
     success,

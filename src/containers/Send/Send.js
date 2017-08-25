@@ -6,6 +6,10 @@ import InputBox from '../../components/InputBox';
 import '../../styles/LoadingSpinner.css';
 import '../../styles/Send.css';
 
+// A form to send coins from the currently selected wallet to destinationAddress
+// Each value of each field in this form is controlled via store
+// to update the value of a given field, we must call the corresponding
+// update action (e.g. onUpdatePasswordField)
 const Send = (props) => {
   const {
     label,
@@ -43,7 +47,7 @@ const Send = (props) => {
       <p> Balance: {'\u0243'} {balance}</p>
       <InputBox
         number
-        label="Amount"
+        label="Amount (satoshis)"
         value={amount}
         onChange={onUpdateAmountField} />
       <InputBox

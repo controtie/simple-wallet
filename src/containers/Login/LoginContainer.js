@@ -24,7 +24,7 @@ const mapStateToProps = (state) => {
 };
 
 // Supply actions defined in login-actions.js with 'dispatch'
-// to allow the to update the store.
+// to allow them to update the store.
 // Pass these supplemented actions to <Login />
 const mapDispatchToProps = (dispatch) => {
   return {

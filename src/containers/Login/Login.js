@@ -5,6 +5,7 @@ import InputBox from '../../components/InputBox';
 import '../../styles/Login.css';
 import '../../styles/LoadingSpinner.css';
 
+// The Login form
 // Each value of each field in this form is controlled via store
 // to update the value of a given field, we must call the corresponding
 // update action (e.g. onUpdatePasswordField)
