@@ -69,6 +69,8 @@ Balance.defaultProps = {
 
 Balance.propTypes = {
   wallets: PropTypes.arrayOf(PropTypes.object),
+  isLoggedIn: PropTypes.bool,
+  fetchingBalance: PropTypes.bool,
   onSelectWallet: PropTypes.func,
 };
 

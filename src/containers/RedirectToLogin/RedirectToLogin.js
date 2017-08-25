@@ -16,5 +16,13 @@ const RedirectToLogin = (props) => {
   );
 };
 
+RedirectToLogin.defaultProps = {
+  onRedirectToLogin: () => {},
+};
+
+RedirectToLogin.propTypes = {
+  onRedirectToLogin: PropTypes.func,
+};
+
 export default RedirectToLogin;
 

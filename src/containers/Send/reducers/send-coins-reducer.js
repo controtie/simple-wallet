@@ -7,7 +7,7 @@ const defaultState = {
 
 // This reducer will return true if coins are being sent
 // used for displaying loading spinner, and controlling SendComplete screen
-const sendingCoins = (state = {}, action = {}) => {
+const sendingCoins = (state = defaultState, action = {}) => {
   switch (action.type) {
     case types.SEND_COINS:
       return {

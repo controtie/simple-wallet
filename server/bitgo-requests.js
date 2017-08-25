@@ -9,7 +9,6 @@ const bitgo =
 router.use(bodyParser.json());
 
 router.post('/login', function(req, res) {
-  console.log('login credentials:', req.body);
   const {
     username,
     password,
@@ -70,7 +69,6 @@ router.get('/wallets', function(req, res) {
 
 router.post('/walletBalances', function(req, res) {
   const walletIds = req.body;
-  console.log('walletIds', walletIds);
   const wallets = bitgo.wallets();
   const balanceRequests = walletIds.map(id => wallets.get(id));
   Promise.all(balanceRequests)
@@ -92,7 +90,7 @@ router.post('/sendCoins', function(req, res) {
     destinationAddress,
     amount,
   } = req.body;
-  console.log('req.body', req.body);
+
   bitgo.unlock({ otp })
     .then(() => {
       return bitgo.wallets().get({id: walletId})
@@ -105,8 +103,8 @@ router.post('/sendCoins', function(req, res) {
       res.send({});
     })
     .catch(err => {
-      console.log('Error fetching wallet!', err);
-      return process.exit(-1);
+      console.log('Error Sending Coins!', err);
+      res.status(400).send({ err });
     });
 });
 

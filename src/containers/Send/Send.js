@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import RedirectToLogin from '../RedirectToLogin/';
 import ActionButton from '../../components/ActionButton';
 import InputBox from '../../components/InputBox';
@@ -65,6 +66,30 @@ const Send = (props) => {
         onClick={onNavigateBack} />
     </div>
   );
+};
+
+Send.defaultProps = {
+  onUpdateAmountField: () => {},
+  onUpdatePasswordField: () => {},
+  onUpdateOTPField: () => {},
+  onUpdateDestinationAddressField: () => {},
+  onNavigateBack: () => {},
+  onSendCoins: () => {},
+};
+
+Send.propTypes = {
+  isLoggedIn: PropTypes.bool,
+  sending: PropTypes.bool,
+  otp: PropTypes.string,
+  password: PropTypes.string,
+  amount: PropTypes.number,
+  destinationAddress: PropTypes.string,
+  onUpdateAmountField: PropTypes.func,
+  onUpdatePasswordField: PropTypes.func,
+  onUpdateOTPField: PropTypes.func,
+  onUpdateDestinationAddressField: PropTypes.func,
+  onNavigateBack: PropTypes.func,
+  onSendCoins: PropTypes.func,
 };
 
 export default Send;

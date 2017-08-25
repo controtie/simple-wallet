@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ActionButton from '../../components/ActionButton';
 import InputBox from '../../components/InputBox';
 import '../../styles/Login.css';
@@ -54,6 +55,25 @@ const Login = (props) => {
         onClick={onLogin} />
     </div>
   );
+};
+
+Login.defaultProps = {
+  onLogin: () => {},
+  onUpdateUsernameField: () => {},
+  onUpdatePasswordField: () => {},
+  onUpdateOTPField: () => {},
+};
+
+Login.propTypes = {
+  isLoggingIn: PropTypes.bool,
+  isLoggedIn: PropTypes.bool,
+  username: PropTypes.string,
+  password: PropTypes.string,
+  otp: PropTypes.string,
+  onLogin: PropTypes.func,
+  onUpdateUsernameField: PropTypes.func,
+  onUpdatePasswordField: PropTypes.func,
+  onUpdateOTPField: PropTypes.func,
 };
 
 export default Login;
