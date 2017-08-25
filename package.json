@@ -7,6 +7,7 @@
     "bitgo": "^3.5.1",
     "body-parser": "^1.17.2",
     "bufferutil": "^3.0.2",
+    "concurrently": "^3.5.0",
     "dns": "^0.2.2",
     "history": "^4.7.2",
     "prop-types": "^15.5.10",
