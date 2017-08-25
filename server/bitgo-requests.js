@@ -1,7 +1,7 @@
-var express    = require('express');
-var router     = express.Router();
-var BitGoJS    = require('bitgo');
-var bodyParser = require('body-parser');
+const express    = require('express');
+const router     = express.Router();
+const BitGoJS    = require('bitgo');
+const bodyParser = require('body-parser');
 
 // Initialize bitgo sdk with local accessToken
 const bitgo =

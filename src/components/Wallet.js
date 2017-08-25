@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import { trimBalance } from '../utils/data-helpers';
 import '../styles/Wallet.css';
 
+// Displays Wallet label, permissions, and balance on
+// the wallet selection screen (Balance)
+// If the user does not have permission to spend
+// selecting the wallet/proceeding to spend screen will be disabled
 const Wallet = (props) => {
   const {
     label,

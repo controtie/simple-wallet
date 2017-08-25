@@ -1,8 +1,8 @@
-var portNumber = process.env.SERVER_PORT || 3001
-var express = require('express');
-var path = require('path');
-var app = express();
-var bitgoRequests = require('./bitgo-requests');
+const portNumber = process.env.SERVER_PORT || 3001
+const express = require('express');
+const path = require('path');
+const app = express();
+const bitgoRequests = require('./bitgo-requests');
 
 // using modules here makes it easier to integrate other SDK
 // tools in the future, e.g. Blockchain.info SDK

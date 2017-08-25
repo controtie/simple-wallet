@@ -2,6 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../styles/ActionButton.css';
 
+// All buttons in Simple Wallet use this ActionButton
+// This keeps styling simple and consistent
+// individual buttons can still be styled by passing in a classes prop
+// to use as a special selector
 const ActionButton = (props) => {
   const {
     classes,
