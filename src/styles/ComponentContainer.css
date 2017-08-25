@@ -18,6 +18,7 @@
   align-items: center;
   width: 400px;
   min-height: 400px;
+  padding-bottom: 47px;
   border: 1px solid black;
   border-radius: 5px;
 }

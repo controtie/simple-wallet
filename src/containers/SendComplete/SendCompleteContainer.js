@@ -29,6 +29,9 @@ const mapDispatchToProps = (dispatch) => {
     onRedirectToWallet: () => {
       dispatch(push('/wallets'));
     },
+    onRedirectToSend: () => {
+      dispatch(push('./send'));
+    },
   };
 };
 

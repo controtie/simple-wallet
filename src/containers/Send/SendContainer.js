@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { goBack } from 'react-router-redux';
+import { push } from 'react-router-redux';
 import Send from './Send';
 import * as actions from './send-actions';
 
@@ -18,6 +18,7 @@ const mapStateToProps = (state) => {
       } = {},
     } = {},
   } = state;
+
   return {
     isLoggedIn,
     otp,
@@ -45,8 +46,8 @@ const mapDispatchToProps = (dispatch) => {
     onSendCoins: () => {
       dispatch(actions.sendCoins());
     },
-    onNavigateBack: () => {
-      dispatch(goBack());
+    onRedirectToWallet: () => {
+      dispatch(push('/wallets'));
     },
   };
 };

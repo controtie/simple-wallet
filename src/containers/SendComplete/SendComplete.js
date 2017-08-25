@@ -11,6 +11,7 @@ const SendComplete = (props) => {
     amount,
     destinationAddress,
     onRedirectToWallet,
+    onRedirectToSend,
   } = props;
 
   if (!isLoggedIn) {
@@ -19,7 +20,13 @@ const SendComplete = (props) => {
 
   if (!success) {
     return (
-      <p> Send Failure! Your coins have not moved. Please try again </p>
+      <div>
+        <p> Send Failure! Your coins have not moved.</p>
+        <p>Please try again. </p>
+        <ActionButton
+          text="Go Back"
+          onClick={onRedirectToSend} />
+      </div>
     );
   }
 
@@ -35,6 +42,7 @@ const SendComplete = (props) => {
 
 SendComplete.defaultProps = {
   onRedirectToWallet: () => {},
+  onRedirectToSend: () => {},
 };
 
 SendComplete.propTypes = {
@@ -43,6 +51,7 @@ SendComplete.propTypes = {
   amount: PropTypes.number,
   destinationAddress: PropTypes.string,
   onRedirectToWallet: PropTypes.func,
+  onRedirectToSend: PropTypes.func,
 };
 
 export default SendComplete;

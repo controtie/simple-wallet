@@ -1,3 +1,5 @@
+import { createSelector } from 'reselect';
+
 export default (state) => {
   const {
     balance: {
@@ -10,6 +12,7 @@ export default (state) => {
       amount,
     } = {},
   } = state;
+
   return {
     walletId,
     otp,

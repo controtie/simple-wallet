@@ -18,7 +18,7 @@ const Send = (props) => {
     onUpdatePasswordField,
     onUpdateOTPField,
     onUpdateDestinationAddressField,
-    onNavigateBack,
+    onRedirectToWallet,
     onSendCoins,
   } = props;
 
@@ -63,7 +63,7 @@ const Send = (props) => {
       <ActionButton
         classes="send-navigate-back"
         text="Back"
-        onClick={onNavigateBack} />
+        onClick={onRedirectToWallet} />
     </div>
   );
 };
@@ -73,7 +73,7 @@ Send.defaultProps = {
   onUpdatePasswordField: () => {},
   onUpdateOTPField: () => {},
   onUpdateDestinationAddressField: () => {},
-  onNavigateBack: () => {},
+  onRedirectToWallet: () => {},
   onSendCoins: () => {},
 };
 
@@ -88,7 +88,7 @@ Send.propTypes = {
   onUpdatePasswordField: PropTypes.func,
   onUpdateOTPField: PropTypes.func,
   onUpdateDestinationAddressField: PropTypes.func,
-  onNavigateBack: PropTypes.func,
+  onRedirectToWallet: PropTypes.func,
   onSendCoins: PropTypes.func,
 };
 
