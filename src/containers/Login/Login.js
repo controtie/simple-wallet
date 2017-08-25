@@ -5,6 +5,9 @@ import InputBox from '../../components/InputBox';
 import '../../styles/Login.css';
 import '../../styles/LoadingSpinner.css';
 
+// Each value of each field in this form is controlled via store
+// to update the value of a given field, we must call the corresponding
+// update action (e.g. onUpdatePasswordField)
 const Login = (props) => {
   const {
     isLoggingIn,

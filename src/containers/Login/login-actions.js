@@ -8,8 +8,7 @@ import {
 } from '../../utils/api-helpers';
 import loginSelector from '../../selectors/login-selector';
 
-// REDUCER: logging-in-reducer.js
-// true while calling login api
+// logging-in-reducer.js
 // displays loading spinner
 export const loggingIn = () => {
   return {
@@ -22,9 +21,8 @@ export const notLoggingIn = () => {
   };
 };
 
-// REDUCER: is-logged-in-reducer.js
-// returns true if a user is logged in
-// while true will display wallet page
+// is-logged-in-reducer.js
+// displays various <RedirectToLogin /> components
 export const isLoggedIn = () => {
   return {
     type: types.IS_LOGGED_IN,
@@ -36,23 +34,24 @@ export const isNotLoggedIn = () => {
   };
 };
 
-// TODO: Add throttling
-// REDUCER: login-username-reducer.js
-// updates state field with passed in data
+// login-username-reducer.js
+// updates username state with passed in data from login form
 export const updateUsernameField = (username) => {
   return {
     type: types.LOGIN_UPDATE_USERNAME,
     username,
   };
 };
-// REDUCER: login-password-reducer.js
+// login-password-reducer.js
+// updates password state with passed in data from login form
 export const updatePasswordField = (password) => {
   return {
     type: types.LOGIN_UPDATE_PASSWORD,
     password,
   };
 };
-// REDUCER: login-otp-reducer.js
+// login-otp-reducer.js
+// updates otp state with passed in data from login form
 export const updateOTPField = (otp) => {
   return {
     type: types.LOGIN_UPDATE_OTP,
@@ -60,9 +59,11 @@ export const updateOTPField = (otp) => {
   };
 };
 
-// API call to local node back-end
 // authenticates user into a bitgo wallet
 export const login = () => (dispatch, getState) => {
+
+  // fetch full state, then select related fields (username, password, otp)
+  // using loginSelector
   const state = getState();
   const loginFields = loginSelector(state);
 
@@ -70,26 +71,28 @@ export const login = () => (dispatch, getState) => {
     return;
   }
 
+  // make payload and merge into POST request options
   const payload = {
     body: JSON.stringify(loginFields)
   };
 
   const options = makePostOptions(payload);
 
-  //display loading spinner and initiate request
+  // display loading spinner and initiate request
   dispatch(loggingIn());
   fetch('api/v1/bitgo/login', options)
     .then(isValidStatusCode)
     .then(toJSON)
     .then((json) => {
       console.log('Login Success!');
+      // hide loading spinner, set user logged in to true, navigate to /wallets route
       dispatch(isLoggedIn());
       dispatch(notLoggingIn());
-      console.log(json);
       dispatch(push('/wallets'));
     })
     .catch((err) => {
       console.log('Login Failed!', err)
+      // hide loading spinner, login failed
       dispatch(isNotLoggedIn());
       dispatch(notLoggingIn());
     });

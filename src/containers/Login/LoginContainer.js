@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import Login from './Login';
 import * as actions from './login-actions';
 
+// Pull data from store and pass to <Login /> to be displayod on login form
 const mapStateToProps = (state) => {
   const {
     login: {
@@ -22,6 +23,9 @@ const mapStateToProps = (state) => {
   }
 };
 
+// Supply actions defined in login-actions.js with 'dispatch'
+// to allow the to update the store.
+// Pass these supplemented actions to <Login />
 const mapDispatchToProps = (dispatch) => {
   return {
     onLogin: () => {
