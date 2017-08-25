@@ -4,7 +4,7 @@ Simple Wallet
 Simple Wallet is a basic interface to BitGo's wallet API
 You can view your wallet balances, and send your coins to any bitcoin address.
 
-<img src="https://media.giphy.com/media/l1J9ym1tXM9JKl18Q/giphy.gif" width="600px"/>
+<img src="https://media.giphy.com/media/l1J9ym1tXM9JKl18Q/giphy.gif" width="300px"/>
 
 Technologies:
 - React
